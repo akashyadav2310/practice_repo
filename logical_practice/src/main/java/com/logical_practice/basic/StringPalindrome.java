@@ -1,4 +1,5 @@
 package com.logical_practice.basic;
+
 import java.util.Scanner;
 
 
