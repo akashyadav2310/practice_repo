@@ -1,4 +1,4 @@
-package com.dsa.problems.sprting;
+package com.dsa.problems.sorting;
 import java.util.Arrays;
 
 //https://leetcode.com/problems/missing-number/
