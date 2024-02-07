@@ -24,29 +24,18 @@ public class PrimeNumber {
 //			i++;
 //		}
 //		return false;
-		
+	
 		int n = input;
-		int m = n / 2;
-		//int flag = 0;
-		
-		if(n == 0 || n == 1) {
+		if(n <= 1)
 			return false;
-			//System.out.println("Number is not Prime");
-			//break;
+		int k = 2;
+		while(k * k <= n) {
+			if(n % k == 0)
+				return false;
+			k++;
 		}
-		else {
-			for(int i = 2; i <= m; i++) {
-				if(n % i == 0) {
-					//flag = 1;
-					return true;
-					//System.out.println("Number is Prime");
-					//break;
-				}
-			}
-		}
-		//if(flag == 0)
-			//System.out.println("Number is not Prime");
-		return false;
+		return true;
 	}
+	
 	
 }
