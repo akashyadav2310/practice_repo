@@ -8,9 +8,9 @@ public class SumOfDigitsOfNumberUsingRec {
 		System.out.print("Sum of digit of a given number : " +ans);
 	}
 
-	static int sumOfNumbers(int number) { //(int sum, int number) {
+	static int sumOfNumbers(int number) {
 		// Base Condition
-		if(number <= 0)
+		if(number == 0)
 			return number;
 		
 		return ((number % 10) + sumOfNumbers(number / 10));

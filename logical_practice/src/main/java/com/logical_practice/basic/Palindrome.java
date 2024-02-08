@@ -1,12 +1,13 @@
 package com.logical_practice.basic;
 import java.util.Scanner;
 
-public class IntegerPalindrome {
+public class Palindrome {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter a number : ");
 		int input = sc.nextInt();
+		sc.close();
 		String ans = (isPalindromeNumber(input)) ? "Number is Palindrome" : "Number is not Palindrome";
 		System.out.print(ans);
 

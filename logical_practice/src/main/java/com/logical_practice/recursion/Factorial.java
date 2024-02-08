@@ -1,5 +1,4 @@
-package com.logical_practice.basic;
-
+package com.logical_practice.recursion;
 import java.util.Scanner;
 
 public class Factorial {
@@ -8,7 +7,7 @@ public class Factorial {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter a number : ");
 		int input = sc.nextInt();
-		//int ans = factorials(input);
+		sc.close();
 		int ans = factorialsUsingRecurssion(input);
 		System.out.print(ans);
 	}
@@ -18,14 +17,6 @@ public class Factorial {
 			return 1;
 		else
 			return input * factorialsUsingRecurssion(input - 1);
-	}
-
-	public static int factorials(int input) {
-		int factorial = 1;
-		for(int i = 1; i <= input; i++) {
-			factorial = factorial * i;
-		}
-		return factorial;
 	}
 
 }
