@@ -8,7 +8,6 @@ public class SortedArrayOrNot {
 		System.out.print( isSorted(input, 0) );
 	}
 	
-	static int i = 1;
 	static boolean isSorted(int[] arr, int index) {
 		if(index == arr.length - 1)
 			return true;
