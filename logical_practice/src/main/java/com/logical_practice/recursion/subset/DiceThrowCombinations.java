@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class DiceThrowCombinations {
 
 	public static void main(String[] args) {
-		int target = 6;
+		int target = 4;
 		
 		//diceNumberCombinations("",target);
 	
