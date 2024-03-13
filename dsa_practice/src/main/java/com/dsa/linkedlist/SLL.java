@@ -19,7 +19,7 @@ public class SLL {
 		if(tail == null) {
 			tail = head;
 		}
-		size += 1;
+		size++;
 	}
 	
 	public void insertLast(int val) {
@@ -50,16 +50,51 @@ public class SLL {
 			return;
 		}
 		Node temp = head;
-		for(int i = 1; i < index; i++) { // Iterate index - 1 because we need to add at that index
-			temp = temp.next;
+		try {
+			for(int i = 1; i < index; i++) { // Iterate index - 1 because we need to add at that index
+				temp = temp.next;
+			}
+			Node node = new Node(val, temp.next); // Pass the value and pass the next Node reference
+			temp.next = node;
+		}catch(NullPointerException e) {
+		    // Handle the exception
+		    System.err.println("Error: Node not found - " + e.getMessage());
+		    //e.printStackTrace(); // Print stack trace for debugging
+		    System.err.println("Please enter a correct node index where you want to insert in the LinkedLIst");
+		    return;
 		}
-		Node node = new Node(val, temp.next); // Pass the value and pass the next Node reference
-		temp.next = node;
 		size++;
+	}
+	
+	// Insert a value at particular index using Recursion
+	public void insertRec(int val, int index)throws NodeNotFoundException {
+		head = insertUsingRec(val, index, head); // Pass head first so we starts iterate and last we set returned node as a head again because returned node have all following nodes reference
+	}
+		
+	private Node insertUsingRec(int val, int index, Node node) throws NodeNotFoundException {
+		if(index == 0) { // Index is 0 means we need to add the given value at that position
+			Node temp = new Node(val, node); // pass the given value and pass the node reference so we can set current node as the next node for the the new/temp node which was we creating 
+			size++;
+			return temp;
+		}
+		try {
+			node.next = insertUsingRec(val, index - 1, node.next); // call recursively and set the node.next the returned value so LinkedList will not broken in the anywhere function call
+		}catch(NullPointerException e) {
+		    // Handle the exception
+		    System.err.println("Error: Node not found - " + e.getMessage());
+		    //e.printStackTrace(); // Print stack trace for debugging
+		    System.err.println("Please enter a correct node index where you want to insert in the LinkedLIst");
+		    return null;
+		}
+		return node; // return the node
 	}
 	
 	public void display() {
 		Node temp = head;
+		if(head == null) {
+			System.out.println("Linkedlist is empty..!");
+			return;
+		}
 		while(temp != null) {
 			System.out.print(temp.value + " -> ");
 			temp = temp.next;
@@ -101,9 +136,8 @@ public class SLL {
 		if(size <= 1) {
 			deleteFirst();
 		}
-		Node secondLast = get(size - 2); // (size - 2) means get the second last node
+		Node secondLast = get(size - 2); // (size - 3) means get the second last node, because size is already +1 so for second last node we pass (size - 3) 
 		int value = tail.value;
-		
 		tail = secondLast;
 		tail.next = null;
 		size--;
@@ -125,6 +159,21 @@ public class SLL {
 		return value;
 	}
 	
+	// 83. Remove Duplicates from Sorted List (https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/)
+	public void deleteDuplicates() {
+		Node node = head;
+		while(node.next != null) { // Iterate till next node is null
+			if(node.value == node.next.value) { // Check node's value and node.next's value is same or not
+				node.next = node.next.next; // If both are same then we set node.next reference is node.next.next means we skip the node.next node
+				size--; // Size--, because we skipped the same value node
+			}else {
+				node = node.next; // Else we move to next node
+			}
+		}
+		tail = node; // Set tail = node, Because In the while loop we are at the last node, where node is last(if last value is unique) else not last(if the there next values are same)
+		tail.next = null;
+	}
+	
 	private class Node{
 		
 		private int value;
@@ -138,7 +187,6 @@ public class SLL {
 			this.value = value;
 			this.next = next;
 		}
-		
 	}
 
 }
