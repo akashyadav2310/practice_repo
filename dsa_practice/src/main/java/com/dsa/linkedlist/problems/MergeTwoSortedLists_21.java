@@ -1,7 +1,5 @@
 package com.dsa.linkedlist.problems;
 
-import java.util.LinkedList;
-
 
 public class MergeTwoSortedLists_21 {
 	
