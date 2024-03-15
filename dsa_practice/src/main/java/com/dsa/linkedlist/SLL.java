@@ -11,6 +11,23 @@ public class SLL {
 		this.size = 0;
 	}
 
+	public static void main(String[] args) {
+		
+		SLL list = new SLL();
+		
+		Node node5 = list.new Node(5);
+		Node node4 = list.new Node(4, node5);
+		Node node3 = list.new Node(3, node4);
+		Node node2 = list.new Node(2, node3);
+		Node node1 = list.new Node(1, node2);
+		
+		list.head = node1;
+		list.tail = node5;
+		list.display();
+		list.reverse(list.head);
+		list.display();
+	}
+	
 	public void insertFirst(int val) {
 		Node node = new Node(val);
 		node.next = head;
@@ -173,6 +190,18 @@ public class SLL {
 		tail = node; // Set tail = node, Because In the while loop we are at the last node, where node is last(if last value is unique) else not last(if the there next values are same)
 		tail.next = null;
 	}
+	
+	// Reverse the linkedList using recursion
+    private void reverse(Node node) {
+        if (node == tail) {
+            head = tail;
+            return;
+        }
+        reverse(node.next);
+        tail.next = node;
+        tail = node;
+        tail.next = null;
+    }
 	
 	private class Node{
 		

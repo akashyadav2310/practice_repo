@@ -1,0 +1,6 @@
+ECHO is on.
+
+# Ignore specific Java file
+logical_practice/src/main/java/com/logical_practice/backtracking/NQueensRecursion.java
+logical_practice/src/main/java/com/logical_practice/basic/array/MaximumPopulationYear1854.java
+logical_practice/src/main/java/com/logical_practice/recursion/CombinationSum39.java

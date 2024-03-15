@@ -4,11 +4,8 @@ package com.dsa.linkedlist.problems;
 public class LinkedListCycle_141 {
 
 	private ListNode head;
-	private ListNode tail;
-	private int size;
 	
 	public LinkedListCycle_141() {
-		this.size = 0;
 	}
 	
 	public static void main(String[] args) {
@@ -43,7 +40,7 @@ public class LinkedListCycle_141 {
         
         System.out.println(cycleLength(list.head));
         
-        System.out.println(detectCycle(list.head));
+        System.out.println(detectCycle(list.head).val);
 
 	}
 	
@@ -92,11 +89,9 @@ public class LinkedListCycle_141 {
                 //ListNode tempNode = head; // set slow node to tempNode for traversing a cycle
                 //int length = 0; // Initially length 0
                 fast = head;
-                System.out.println("1 : " +slow.val + " " + fast.val);
                 while(slow != fast){ // first we do and then tempNode == fast we got the cycle length
                     slow = slow.next;
                     fast = fast.next;
-                    System.out.println(slow.val + " " + fast.val);
                     if(slow == fast)
                         return slow;  // return any one slow or fast
                 }
